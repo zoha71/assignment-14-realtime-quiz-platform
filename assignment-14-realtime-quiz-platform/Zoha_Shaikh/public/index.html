@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Quiz Battle Arena | Real-Time Multiplayer Trivia</title>
+  <meta name="description" content="A real-time multiplayer trivia and quiz battle arena powered by Node.js, Express, and Socket.io with synchronous timers and speed-based scoring.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container" style="max-width: 800px; text-align: center; margin-top: 2rem;">
+    
+    <!-- Hero Header -->
+    <div>
+      <div class="badge badge-live" style="margin-bottom: 1rem;">
+        <span>⚡ Socket.io Real-Time Engine</span>
+      </div>
+      <h1 class="text-gradient" style="font-size: clamp(2.5rem, 6vw, 3.8rem); margin-bottom: 0.75rem;">
+        Quiz Battle Arena
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+        Real-time, multiplayer, high-stakes trivia battle with millisecond speed bonuses and authoritative anti-cheat timers.
+      </p>
+    </div>
+
+    <!-- Mode Selection Portal -->
+    <div class="portal-grid">
+      <!-- Host Card -->
+      <a href="host.html" class="portal-card" id="btn-portal-host">
+        <div class="portal-icon">👑</div>
+        <h2 class="portal-title">Host a Quiz</h2>
+        <p class="portal-desc">
+          Create a private arena room with a 4-digit PIN, control live question pacing, and broadcast the leaderboard to the big screen.
+        </p>
+        <div style="margin-top: 1.5rem; width: 100%;">
+          <span class="btn-primary" style="pointer-events: none;">Host Dashboard &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Player Card -->
+      <a href="player.html" class="portal-card" id="btn-portal-player">
+        <div class="portal-icon">🎮</div>
+        <h2 class="portal-title">Join a Quiz</h2>
+        <p class="portal-desc">
+          Enter a 4-digit room PIN from your mobile device or laptop, lock in answers with 4-color gamepad buttons, and compete for rank #1!
+        </p>
+        <div style="margin-top: 1.5rem; width: 100%;">
+          <span class="btn-primary" style="background: var(--brand-accent); color: #0e1117; pointer-events: none;">Player Gamepad &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- System Highlights Footer -->
+    <div class="glass-card" style="margin-top: 1.5rem; padding: 1.25rem 2rem;">
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; color: var(--text-secondary); font-size: 0.95rem;">
+        <div>⏱️ <strong>Authoritative Clocks:</strong> Zero client drift</div>
+        <div>🛡️ <strong>Anti-Cheat:</strong> Server-enforced cutoffs</div>
+        <div>⚡ <strong>Speed Scoring:</strong> Up to 1,000 pts / Q</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

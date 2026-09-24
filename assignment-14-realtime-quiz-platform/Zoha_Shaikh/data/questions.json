@@ -1,0 +1,98 @@
+[
+  {
+    "category": "Tech",
+    "question": "What is Node.js runtime based on?",
+    "options": ["V8", "SpiderMonkey", "Chakra", "JVM"],
+    "correctOption": 0,
+    "explanation": "Node.js is built on Google Chrome's V8 JavaScript engine.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Tech",
+    "question": "Which protocol does Socket.io upgrade to for full-duplex communication?",
+    "options": ["HTTP/2", "WebSocket", "gRPC", "WebRTC"],
+    "correctOption": 1,
+    "explanation": "Socket.io starts with HTTP long-polling and upgrades to WebSocket for bi-directional communication.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Tech",
+    "question": "What data structure does the JavaScript event loop use to manage task execution?",
+    "options": ["Call Stack and Callback Queue", "Binary Search Tree", "Linked List", "Min Heap"],
+    "correctOption": 0,
+    "explanation": "JavaScript utilizes a Call Stack for synchronous execution and a Callback Queue for asynchronous events.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Tech",
+    "question": "Which HTTP status code signifies that a server successfully processed a request with no content returned?",
+    "options": ["200 OK", "201 Created", "204 No Content", "304 Not Modified"],
+    "correctOption": 2,
+    "explanation": "204 No Content indicates success where the client does not need to navigate away from the current page.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "General Knowledge",
+    "question": "Which is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correctOption": 3,
+    "explanation": "The Pacific Ocean is the largest and deepest ocean basin on Earth.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "General Knowledge",
+    "question": "Who painted the famous artwork 'The Starry Night'?",
+    "options": ["Pablo Picasso", "Vincent van Gogh", "Claude Monet", "Leonardo da Vinci"],
+    "correctOption": 1,
+    "explanation": "'The Starry Night' was painted by Dutch Post-Impressionist painter Vincent van Gogh in 1889.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "General Knowledge",
+    "question": "Which country is home to the ancient ruins of Machu Picchu?",
+    "options": ["Peru", "Chile", "Bolivia", "Ecuador"],
+    "correctOption": 0,
+    "explanation": "Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "General Knowledge",
+    "question": "How many continents are there on Earth?",
+    "options": ["5", "6", "7", "8"],
+    "correctOption": 2,
+    "explanation": "The seven continents are Asia, Africa, North America, South America, Antarctica, Europe, and Australia.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Science",
+    "question": "What is the chemical symbol for Gold?",
+    "options": ["Ag", "Au", "Fe", "Pb"],
+    "correctOption": 1,
+    "explanation": "Au comes from the Latin word for gold, 'Aurum', meaning shining dawn.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Science",
+    "question": "What is the powerhouse of the cell?",
+    "options": ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"],
+    "correctOption": 2,
+    "explanation": "Mitochondria generate most of the chemical energy needed to power the cell's biochemical reactions.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Science",
+    "question": "What is the speed of light in vacuum (approximate)?",
+    "options": ["300,000 km/s", "150,000 km/s", "1,000,000 km/s", "30,000 km/s"],
+    "correctOption": 0,
+    "explanation": "Light travels at approximately 299,792 km/s (roughly 300,000 km/s) in vacuum.",
+    "timeLimitSeconds": 15
+  },
+  {
+    "category": "Science",
+    "question": "Which planet in our solar system has the most prominent ring system?",
+    "options": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+    "correctOption": 1,
+    "explanation": "Saturn is famous for its extensive and bright ring system made mostly of ice particles.",
+    "timeLimitSeconds": 15
+  }
+]

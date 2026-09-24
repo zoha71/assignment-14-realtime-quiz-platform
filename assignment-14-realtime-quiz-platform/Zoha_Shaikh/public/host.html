@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Dashboard | Live Quiz Battle Arena</title>
+  <meta name="description" content="Host control screen for live multiplayer quiz rooms. Manage lobbies, synchronized timers, and real-time leaderboards.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Top Navigation Bar -->
+    <header style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="/" class="btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">&larr; Home</a>
+        <span class="badge">👑 Host Arena</span>
+      </div>
+      <div id="host-room-info" class="badge badge-live" style="display: none;">
+        Room PIN: <strong id="header-pin-val" style="margin-left: 0.25rem;">----</strong>
+      </div>
+    </header>
+
+    <!-- SECTION 1: CREATE QUIZ FORM -->
+    <section id="view-create" class="glass-card" style="text-align: center;">
+      <h1 class="text-gradient" style="font-size: 2.3rem; margin-bottom: 0.5rem;">Host a Quiz Battle</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        Configure your arena settings and launch a live multiplayer battle.
+      </p>
+
+      <form id="form-create-quiz" style="max-width: 480px; margin: 0 auto;">
+        <div class="form-group">
+          <label class="form-label" for="input-host-name">Host Name</label>
+          <input type="text" id="input-host-name" class="form-input" placeholder="e.g. Professor X" maxlength="30" required autofocus>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="select-category">Question Category</label>
+          <select id="select-category" class="form-select">
+            <option value="All">All Categories (Random Mix)</option>
+          </select>
+        </div>
+
+        <button type="submit" id="btn-create-room" class="btn-primary" style="margin-top: 1rem;">
+          🚀 Create Quiz Room
+        </button>
+      </form>
+    </section>
+
+    <!-- SECTION 2: LOBBY & PLAYER ROSTER -->
+    <section id="view-lobby" class="glass-card pin-display-card" style="display: none;">
+      <div class="badge badge-warning" style="margin-bottom: 0.5rem;">
+        CATEGORY: <span id="lobby-category-badge" style="font-weight: 700; margin-left: 0.3rem;">ALL</span>
+      </div>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+        Join at <strong style="color: var(--brand-primary);">/player.html</strong> using Game PIN:
+      </p>
+      <div id="display-pin" class="pin-code">----</div>
+
+      <div style="margin: 1.5rem 0;">
+        <h3 style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.75rem;">
+          Connected Players (<span id="player-count">0</span>)
+        </h3>
+        <div id="lobby-roster" class="players-roster">
+          <p id="empty-roster-msg" style="color: var(--text-muted); font-style: italic;">
+            Waiting for players to join with the PIN...
+          </p>
+        </div>
+      </div>
+
+      <button type="button" id="btn-start-game" class="btn-primary" style="max-width: 380px; margin: 0 auto;" disabled>
+        ▶️ Start Game (<span id="btn-player-count">0</span> Players)
+      </button>
+    </section>
+
+    <!-- SECTION 3: LIVE ACTIVE QUESTION -->
+    <section id="view-question" class="glass-card" style="display: none;">
+      <!-- Header with Question Count, Timer, and Answer Counter -->
+      <div class="game-header-bar">
+        <div>
+          <span class="badge" id="badge-question-num">Question 1 / 5</span>
+          <span class="badge badge-live" id="badge-answer-count" style="margin-left: 0.5rem;">
+            Answers: <strong id="answer-count-val">0</strong> / <span id="answer-total-val">0</span>
+          </span>
+        </div>
+
+        <div class="timer-circle" id="host-timer">15</div>
+      </div>
+
+      <!-- Question Text -->
+      <h2 id="host-question-text" class="question-prompt">
+        Loading Question...
+      </h2>
+
+      <!-- 4 Options Grid -->
+      <div class="host-options-grid" id="host-options-container">
+        <!-- Injected dynamically -->
+      </div>
+    </section>
+
+    <!-- SECTION 4: ROUND REVEAL & LEADERBOARD -->
+    <section id="view-reveal" class="glass-card" style="display: none;">
+      <div class="game-header-bar">
+        <span class="badge badge-live">⏱️ Round Complete</span>
+        <button type="button" id="btn-next-question" class="btn-primary" style="width: auto; padding: 0.75rem 1.5rem;">
+          Next Question &rarr;
+        </button>
+      </div>
+
+      <!-- Answer Highlight -->
+      <div class="explanation-box" id="reveal-explanation-box">
+        <strong>Correct Answer:</strong> <span id="reveal-correct-text">...</span><br>
+        <span id="reveal-explanation-text" style="color: var(--text-primary); margin-top: 0.35rem; display: block;">...</span>
+      </div>
+
+      <!-- Standings Table -->
+      <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">🏆 Current Standings</h3>
+        <div id="host-leaderboard-list" class="leaderboard-list">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FINAL GAME OVER & WINNER SCREEN -->
+    <section id="view-gameover" class="glass-card" style="text-align: center; display: none;">
+      <div class="badge badge-live" style="margin-bottom: 1rem;">🎉 Quiz Finished!</div>
+      <h1 class="text-gradient" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1.5rem;">
+        Battle Champions
+      </h1>
+
+      <!-- Winner Hero Card -->
+      <div id="winner-hero" class="glass-card" style="border: 1.5px solid var(--brand-accent); background: #161b22; max-width: 500px; margin: 0 auto 2rem;">
+        <div style="font-size: 4rem; margin-bottom: 0.5rem;">👑</div>
+        <div style="color: var(--text-secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;">Grand Winner</div>
+        <h2 id="final-winner-name" style="font-size: 2.2rem; color: var(--brand-accent); margin: 0.25rem 0;">No Winner</h2>
+        <div id="final-winner-score" style="font-size: 1.5rem; font-weight: 800; color: #ffffff;">0 pts</div>
+      </div>
+
+      <!-- Final Rank Standings -->
+      <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Final Standings</h3>
+      <div id="final-ranks-list" class="leaderboard-list" style="max-width: 600px; margin: 0 auto 2rem;">
+        <!-- Injected dynamically -->
+      </div>
+
+      <button type="button" id="btn-host-restart" class="btn-primary" style="max-width: 300px; margin: 0 auto;">
+        🔄 Host Another Quiz
+      </button>
+    </section>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+  <script src="host.js"></script>
+</body>
+</html>
